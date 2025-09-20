@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/gustavosfrts/goapi-docker/models"
+	"github.com/gustavosfrts/golang-api-trivia/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -19,10 +19,10 @@ var DB Dbinstance
 
 func ConnectDb() {
 	dsn := fmt.Sprintf(
-		"host= db user%s password %s dbname %s port=5432 sslmode=disable TimeZone=America/Sao_Paulo",
+		"host=db user=%s password=%s dbname=%s port=5432 sslmode=disable TimeZone=America/Sao_Paulo",
 		os.Getenv("DB_USER"),
 		os.Getenv("DB_PASSWORD"),
-		os.Getenv("DB_NAME")
+		os.Getenv("DB_NAME"),
 	)
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
